@@ -3,9 +3,9 @@ package task_4
 import (
 	"fmt"
 	"log"
-	"math"
 	"math/rand"
 	"time"
+	"unicode/utf8"
 )
 
 
@@ -33,7 +33,7 @@ Menu:
 	case 2:
 		FloatFunc()
 	case 3:
-		//SimbolFunc()
+		SimbolFunc()
 	default:
 		fmt.Print("Неверный выбор пункта меню.")
 		goto Menu
@@ -59,16 +59,52 @@ IntLoop:
 func FloatFunc(){
 FloatLoop:
 	fmt.Print("Введите через пробел верхний и нижние диапазоны\n")
-	var min, max float32
+	var min, max, minFloat, maxFloat, randFloat, Result float32
+	var minInt, maxInt, randInt int
 	_, err := fmt.Scan(&min, &max)
 	if err != nil {
-		log.Printf("Ошибка ввода int диапазона: %s", err)
+		log.Printf("Ошибка ввода float диапазона: %s", err)
 		goto FloatLoop
 	}
 	if min > max {
 		min, max = max, min
 	}
-	floatInRange := rand.Float64()
-	fmt.Printf("========\n=%v\n=%v\n=======", floatInRange, math.Pow10(6))
+	minInt, maxInt = int(min), int(max)
+	minFloat, maxFloat = min - float32(minInt), max - float32(maxInt)
+	randInt = minInt + rand.Intn(maxInt - minInt + 1)
+RandomFloatLoop:
+	if minFloat > maxFloat {
+			randFloat = rand.Float32()
+			if randFloat > ((maxFloat - minFloat)*(-1)){
+				goto RandomFloatLoop
+			}
+
+	}else{
+		randFloat = rand.Float32()
+		if randFloat < minFloat || randFloat > maxFloat {
+			goto RandomFloatLoop
+		}
+	}
+	Result = randFloat + float32(randInt)
+	fmt.Println(Result)
+}
+
+func SimbolFunc(){
+	var min, max string
+	if _, err := fmt.Scan(&min, &max); err != nil{
+		log.Printf("Error of input string %s", err)
+	}
+
+	runeMin, _:=utf8.DecodeRuneInString(min)
+	runeMax, _ :=utf8.DecodeLastRuneInString(max)
+	if int(runeMin) > int(runeMax) {
+		runeMin, runeMax = runeMax, runeMin
+	}
+	randRuneInt := int(runeMin) + rand.Intn(int(runeMax) - int(runeMin) + 1)
+	str := fmt.Sprint(rune(randRuneInt))
+	fmt.Printf( "%#U", str)
+
+
+
 
 }
