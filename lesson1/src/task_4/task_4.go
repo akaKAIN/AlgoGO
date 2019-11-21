@@ -101,8 +101,7 @@ func SimbolFunc(){
 		runeMin, runeMax = runeMax, runeMin
 	}
 	randRuneInt := int(runeMin) + rand.Intn(int(runeMax) - int(runeMin) + 1)
-	str := fmt.Sprint(rune(randRuneInt))
-	fmt.Printf( "%#U", str)
+	fmt.Printf( "[%s; %s] = %c", min, max, randRuneInt)
 
 
 
