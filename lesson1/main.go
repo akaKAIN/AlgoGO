@@ -1,6 +1,6 @@
 package main
 
-import "task_7"
+import "task_8"
 
 func main(){
 	//fmt.Printf("Сумма=%d\n\n", task_1.SumTreeDigit())
@@ -12,5 +12,6 @@ func main(){
 	//	fmt.Println(err)
 	//}
 	//task_6.FindSymbol()
-	task_7.Triangle()
+	//task_7.Triangle()
+	task_8.Year()
 }
