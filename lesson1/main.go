@@ -1,6 +1,9 @@
 package main
 
-import "task_5"
+import (
+	"fmt"
+	"task_5"
+)
 
 func main(){
 	//fmt.Printf("Сумма=%d\n\n", task_1.SumTreeDigit())
@@ -8,6 +11,8 @@ func main(){
 	//task_3.TwoPoints()
 	//task_3.TwoPoints()
 	//task_4.MyRange()
-	task_5.Test()
+	if err := task_5.FindRangeSymbol(); err != nil {
+		fmt.Println(err)
+	}
 
 }
