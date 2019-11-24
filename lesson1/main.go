@@ -1,5 +1,7 @@
 package main
 
+import "task_7"
+
 func main(){
 	//fmt.Printf("Сумма=%d\n\n", task_1.SumTreeDigit())
 	//task_2.BoolOperations()
@@ -10,5 +12,5 @@ func main(){
 	//	fmt.Println(err)
 	//}
 	//task_6.FindSymbol()
-
+	task_7.Triangle()
 }
