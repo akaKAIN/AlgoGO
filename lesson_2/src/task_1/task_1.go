@@ -1,12 +1,14 @@
 package task_1
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
 	"strconv"
 	"strings"
 	"time"
-)
+ )
 
 /*
 1.	Написать программу, которая будет складывать, вычитать, умножать или делить
@@ -28,7 +30,9 @@ func Calc() {
 
 InputLoop:
 	fmt.Println("\nВведите математическую операцию: ")
-	if _, err := fmt.Scan(&row); err != nil {
+	reader := bufio.NewReader(os.Stdin)
+	row, err = reader.ReadString('\n')
+	if err != nil {
 		log.Printf("Error input: %s, input=%q", err, row)
 		goto InputLoop
 	}
@@ -75,15 +79,32 @@ bufferLoop:
 		goto bufferLoop
 	}
 	switch choise {
-	case 1: goto InputLoop
-	case 2: goto endLoop
-	default: goto bufferLoop
+	case 1:
+		goto InputLoop
+	case 2:
+		goto endLoop
+	default:
+		goto bufferLoop
 	}
 
 endLoop:
 	fmt.Println("bye!")
 
 }
+
+//func parseInt(text string)(int, error){
+//	for i:=0; i<len(text);i++{
+//		if !unicode.IsDigit(int32(text[i])){
+//			var num, err = strconv.ParseInt(text[:i], 10, 32)
+//			if err != nil {
+//				err = fmt.Errorf("Error:  %s", err)
+//				return 0, err
+//			}
+//			break
+//		}
+//	}
+//	return num, nil
+//}
 
 func parse(row string, operand string) (int64, error) {
 	var ind int
@@ -94,16 +115,24 @@ func parse(row string, operand string) (int64, error) {
 		err = fmt.Errorf("Ошибка данных %s. input_row=%v, symb=%v\n", err, row, operand)
 		return 0, err
 	}
-	b, err := strconv.ParseInt(row[:ind], 10, 64)
+	b, err := strconv.ParseInt(row[ind+1:len(row)-1], 10, 64)
 	if err != nil {
 		err = fmt.Errorf("Ошибка данных %s. input_row=%v, symb=%v\n", err, row, operand)
 		return 0, err
 	}
 	switch operand {
-	case "+": res = a + b
-	case "-": res = a - b
-	case "*": res = a * b
-	case "/": res = a / b
+	case "+":
+		res = a + b
+	case "-":
+		res = a - b
+	case "*":
+		res = a * b
+	case "/":
+		if b == 0 {
+			err = fmt.Errorf("Ошибка деления на ноль.")
+			return 0, err
+		}
+		res = a / b
 	}
 	return res, nil
 }
