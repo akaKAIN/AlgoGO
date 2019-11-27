@@ -16,7 +16,12 @@ import (
 """
  */
 
-func genArray(limit int) []int {
+func GenArray() []int {
+	var limit int
+	fmt.Println("Введите длину массива")
+	if _, err := fmt.Scan(&limit); err != nil {
+		log.Printf("Ошибка ввода %s, %v", err, limit)
+	}
 	result := make([]int, 0)
 	rand.Seed(time.Now().UnixNano())
 	for i:=0; i<limit; i++{
@@ -26,15 +31,8 @@ func genArray(limit int) []int {
 }
 
 func SortArray(){
-	var limit int
 	var randArr, sortArr []int
-
-
-	fmt.Println("Введите длину массива")
-	if _, err := fmt.Scan(&limit); err != nil {
-		log.Printf("Ошибка ввода %s, %v", err, limit)
-	}
-	randArr = genArray(limit)
+	randArr = GenArray()
 	for ind, val := range randArr {
 		if val % 2 == 0 {
 			sortArr = append(sortArr, ind)
