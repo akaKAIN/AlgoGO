@@ -9,7 +9,7 @@ import "fmt"
 """
  */
 
-func AckiiTable(){
+func AsciiTable(){
 	var count = 1
 	var sep, rowSep string
 
