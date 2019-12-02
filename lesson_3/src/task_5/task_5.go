@@ -7,7 +7,7 @@ import (
 /*
 В массиве найти максимальный отрицательный элемент.
 # Вывести на экран его значение и позицию (индекс) в массиве.
- */
+*/
 
 type Point struct {
 	Ind int
@@ -24,10 +24,9 @@ func MaxNegativeNumber() {
 	}
 	if num.Val >= 0 {
 		fmt.Println("Отлицательныз чисел не найдено в массиве.")
-	}else{
+	} else {
 		fmt.Printf("Самое большое отрицательное = %d по индексу %d\n", num.Val, num.Ind)
 	}
 	fmt.Println(randArr)
-
 
 }

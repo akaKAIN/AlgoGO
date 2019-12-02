@@ -14,7 +14,7 @@ import (
 (или 0, 3, 4, 5 - если индексация начинается с нуля),
 т.к. именно в этих позициях первого массива стоят четные числа.
 """
- */
+*/
 
 func GenArray() []int {
 	var limit int
@@ -24,22 +24,20 @@ func GenArray() []int {
 	}
 	result := make([]int, 0)
 	rand.Seed(time.Now().UnixNano())
-	for i:=0; i<limit; i++{
+	for i := 0; i < limit; i++ {
 		result = append(result, rand.Intn(limit))
 	}
 	return result
 }
 
-func SortArray(){
+func SortArray() {
 	var randArr, sortArr []int
 	randArr = GenArray()
 	for ind, val := range randArr {
-		if val % 2 == 0 {
+		if val%2 == 0 {
 			sortArr = append(sortArr, ind)
 		}
 	}
-	fmt.Println("Сгенерированный массив: ",randArr)
+	fmt.Println("Сгенерированный массив: ", randArr)
 	fmt.Println("Отсеянный массив: ", sortArr)
 }
-
-

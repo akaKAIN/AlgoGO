@@ -21,14 +21,14 @@ def test(num):
 	print(answer)
 
 
- */
+*/
 
-func FrequentCounter(){
+func FrequentCounter() {
 	var randArr []int
 	var max int
 	var answer string
 
-	data := make(map [int]int)
+	data := make(map[int]int)
 	randArr = task_2.GenArray()
 	for _, val := range randArr {
 		data[val]++
@@ -39,8 +39,6 @@ func FrequentCounter(){
 			answer = fmt.Sprintf("\n\nЧисло %d встречается %d раз(а)\n", key, val)
 		}
 	}
-
-
 
 	fmt.Println(answer)
 }
