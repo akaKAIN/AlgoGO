@@ -7,8 +7,23 @@ import (
 
 func SumTreeDigit() int {
 	var input, sum int
+
+	input = InterNum()
+	sum = CalcSum(input)
+	return sum
+}
+
+func CalcSum(num int)(sum int){
+	if num < 0 {
+		num *= -1
+	}
+	sum = num/100 + (num%100)/10 + (num % 10)
+	return
+}
+
+func InterNum() (input int) {
 	fmt.Print("Задание1.\nПодсчет суммы трехзначного числа\n")
-	InputLoop:
+InputLoop:
 	fmt.Print("\nВведите трехзначное число\n")
 	if _, err := fmt.Scan(&input); err != nil {
 		log.Println("Error input ", err)
@@ -19,9 +34,5 @@ func SumTreeDigit() int {
 		log.Println("Вы ввели число неверное по числу знаков.")
 		goto InputLoop
 	}
-	if input < 0 {
-		input *= -1
-	}
-	sum = input/100 + (input % 100)/10 + (input % 10)
-	return sum
+	return
 }

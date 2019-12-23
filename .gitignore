@@ -131,3 +131,6 @@ media/
 \.idea/
 
 overview/gantt\.html
+/lesson_4/src/github.com/
+/lesson_4/src/gopkg.in/
+/lesson_4/pkg/linux_amd64/
