@@ -1,3 +1,5 @@
+//Открывает указанный файл, создает файл с таким же именем и расширением .gz
+//перезаписывает новый файл новым (сжатым) содержимым.
 package main
 
 import (
@@ -39,6 +41,7 @@ func main() {
 	wg.Wait()
 	fmt.Println(time.Since(now))
 }
+
 
 func compress(fileName string, wg *sync.WaitGroup) (err error) {
 	file, err := os.Open(fileName)
